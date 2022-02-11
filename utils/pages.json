@@ -1,0 +1,27 @@
+{
+  "main": {
+    "import": "from Pages.main_page.main_page import MainPage",
+    "object": "MainPage()",
+    "kv_file": "Pages/main_page/main_page.kv"
+  },
+  "addition": {
+    "import": "from Pages.addition_page.addition_page import AdditionPage",
+    "object": "AdditionPage()",
+    "kv_file": "Pages/addition_page/addition_page.kv"
+  },
+  "subtraction": {
+    "import": "from Pages.subtraction_page.subtraction_page import SubtractionPage",
+    "object": "SubtractionPage()",
+    "kv_file": "Pages/subtraction_page/subtraction_page.kv"
+  },
+  "combine": {
+    "import": "from Pages.combined_page.combined_page import CombinedPage",
+    "object": "CombinedPage()",
+    "kv_file": "Pages/combined_page/combined_page.kv"
+  },
+  "percent": {
+    "import": "from Pages.percent_page.percent_page import PercentPage",
+    "object": "PercentPage()",
+    "kv_file": "Pages/percent_page/percent_page.kv"
+  }
+}
