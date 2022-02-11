@@ -1,0 +1,725 @@
+
+<PercentPage>:
+    time: time
+    answer : answer
+    top_num : top_num
+    bot_num : bot_num
+    correct: correct
+    operator: operator
+    next : next
+    score: score
+    clock : clock
+    clock_name : clock_name
+    popup : popup
+    percentage: percentage
+    attempts: attempts
+    the_seconds: the_seconds
+    aq : aq
+    no_ques: no_ques
+    time_label: time_label
+    thescore_label: thescore_label
+    no_ques2: no_ques2
+    #go_home : go_home
+    img : img
+    scolbl: scolbl
+    grid: grid
+    streakcomment : streakcomment
+    streaknum : streaknum
+    end_streak : end_streak
+    xae: xae
+    back_card : back_card
+    back_card2: back_card2
+    back_card3: back_card3
+    top_card : top_card
+    backspace: backspace
+    progressbar: progressbar
+    test_label: test_label
+    visual : visual
+    scroller: scroller
+    question_answer : question_answer
+    question_part : question_part
+    answer_part : answer_part
+    realanswer_part : realanswer_part
+    swipeupicon: swipeupicon
+    swipeup : swipeup
+    samurai : samurai
+    samurai_two : samurai_two
+    what : what
+    the_seconds_new : the_seconds_new
+    streak_label : streak_label
+    final_score_label : final_score_label
+    visual_depression : visual_depression
+    img_final : img_final
+
+    FloatLayout:
+        RelativeLayout:
+            id: img
+            opacity: 0
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: "assets/images/perc.png"
+
+        RelativeLayout:
+            id: img_final
+            opacity: 0
+            canvas.before:
+                Rectangle:
+                    #id: theimgs
+                    pos: self.pos
+                    size: self.size
+                    source: "assets/images/red.jpg"
+
+        MDCard:     # behind the score, timer
+            id: top_card
+            size_hint: None, None
+            size: root.width, '45dp'
+            ripple_behavior: True
+            line_color: [1, 1, 1, 1]
+            md_bg_color: [0,0,0,0.4]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.95}
+            elevation : 15
+
+            Label:
+                id: scolbl
+                color: (39/255, 245/255, 242/255, 1)
+                text: "score:"
+                bold: True
+                italic: True
+                pos_hint: {'center_y': .5}
+                font_size: '15sp'
+
+            Label:
+                id: score
+                text: "0"
+                pos_hint: {'center_y': .5}
+                font_size: '25sp'
+            MDFillRoundFlatIconButton:
+                id: xae
+                text: "EXIT"
+                italic: True
+                font: '15sp'
+                icon: "exit-run"
+                opacity : 0
+                theme_text_color: "Custom"
+                text_color: [0,0,0,1]
+                icon_color: [0,0,0,1]
+                md_bg_color: [1,1,1,1]
+                pos_hint: {'center_y': .5}
+                on_release:
+                    root.openpopup()
+            Label:
+                id: clock_name
+                color: (39/255, 245/255, 242/255, 1)
+                #opacity: 0
+                opacity: 1
+                bold: True
+                italic: True
+                text: "Timer:"
+                pos_hint: {'center_y': .5}
+                font_size: 15
+
+            Label:
+                id: clock
+                opacity: 0
+                text: "1:00"
+                pos_hint: {'center_y': .5}
+                font_size: '20sp'
+
+        MDCard:
+            id: back_card3
+            size_hint: None, None
+            size: '261dp', '170dp'
+            #line_color: [248/255, 181/255, 12/255, 0]
+            line_color: [218/255, 255/255, 131/255, 0]
+            md_bg_color: [0,0,0, 0]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.73}
+            elevation : 15
+
+        MDCard:
+            id: back_card2
+            size_hint: None, None
+            size: '258dp', '167dp'
+#            line_color: [248/255, 181/255, 12/255, 0]
+            line_color: [218/255, 255/255, 131/255, 0]
+            md_bg_color: [0,0,0,0]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.73}
+            elevation : 15
+
+        MDCard:
+            id: back_card
+            #opacity: 0
+            size_hint: None, None
+            size: '256dp', '165dp'
+#            line_color: [248/255, 181/255, 12/255, 0]
+            line_color: [218/255, 255/255, 131/255, 0]
+            md_bg_color: [0,0,0,0]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.73}
+            elevation : 15
+
+        MDProgressBar:
+            id: progressbar
+            opacity: 0
+            value: 100
+            size_hint: None, None
+            #color: (39/255, 245/255, 242/255, 1)
+            color: (255/255, 255/255, 255/255, 1)
+            orientation: "vertical"
+            size: '5dp', '170dp'
+            pos : back_card.pos[0] + dp(270), back_card.pos[1]
+
+        Image:
+            id: visual
+            source: ""
+            size_hint: None, None
+            #size: 1280/10, 720/10
+            size: 0,0
+            #pos: back_card.pos[0] - 40, back_card.pos[1] + 125
+            pos: back_card.pos[0]-dp(20), back_card.pos[1] + dp(5.5)
+
+        Image:
+            id: visual_depression
+            opacity: 0
+            source: ""
+            size_hint: None, None
+            size: dp(604/6.5), dp(512/6.5)
+            pos: back_card.pos[0] + dp(80), back_card.pos[1] + dp(50)
+            #pos_hint:{'center_x' : back_card.pos[0], 'center_y': back_card.pos[1]}
+
+
+        Label:
+            id: top_num
+            text: ""
+            font_size: '63sp'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.81}
+
+        Label:
+            id: bot_num
+            text: ""
+            font_size: '35sp'
+            pos_hint: {'center_x' : 0.5, 'center_y':0.68}
+
+        Label:
+            id : operator
+            text: ""
+            font_size: '30sp'
+            italic: True
+            pos: bot_num.pos[0] - dp(90), bot_num.pos[1]
+
+
+        Label:
+            id: test_label
+            text: "h"
+            font: 1
+            opacity: 0
+            pos_hint: {'center_x':-0.5, 'center_y':-0.5}
+
+
+        TextInput:
+            id: answer
+            size_hint: None, None
+            opacity: 0
+            size: '140dp', '65dp'
+            is_focusable:False
+            use_bubble:False
+            hint_text: "?"
+            halign: "center"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.51}
+            multiline: False
+            font_size: '50sp'
+
+        Label:
+            id: correct
+            opacity : 0
+            text: ""
+            bold: True
+            font_size: '17sp'
+            pos: top_num.pos[0] +dp(105), top_num.pos[1] + dp(20)
+
+        Label:
+            id: what
+            opacity : 0
+            color : (1/255, 1/255, 1/255, 1)
+            text: ""
+            bold: True
+            font_size: '22sp'
+            italic: True
+            pos_hint: {'center_x':0.5, 'center_y': 0.51}
+
+        GridLayout:
+            id: grid
+            opacity : 0
+            cols: 3
+            size_hint: 0.75,0.35
+            pos_hint : {'center_x': 0.5, 'center_y': 0.25}
+            spacing: '10dp','10dp'
+
+            MDFloatingActionButton:
+                icon: "numeric-1"
+                #md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                md_bg_color: (255/255, 220/255, 194/255, 0.66)
+                text_color: [0,0,0,1]
+                size_hint: 0.4,0.2
+                line_width: dp(1.2)
+                line_color: [246/255, 121/255, 2/255, 1]
+                on_release:
+                    root.numpad_one()
+
+            MDFloatingActionButton:
+                icon: "numeric-2"
+                #md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                md_bg_color: (255/255, 220/255, 194/255, 0.66)
+                text_color: [0,0,0,1]
+                size_hint: 0.4,0.2
+                line_width: dp(1.2)
+                line_color: [246/255, 121/255, 2/255, 1]
+                on_release:
+                    root.numpad_two()
+
+            MDFloatingActionButton:
+                icon: "numeric-3"
+                #md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                md_bg_color: (255/255, 220/255, 194/255, 0.66)
+                line_width: dp(1.5)
+                line_color: [246/255, 121/255, 2/255, 1]
+                text_color: [0,0,0,1]
+                id: 3
+                size_hint: 0.4,0.2
+                on_release:
+                    root.numpad_three()
+
+            MDFloatingActionButton:
+                icon: "numeric-4"
+                md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                text_color: [0,0,0,1]
+                #line_color: [255/255, 255/255, 255/255, 1]
+                #line_width: 1.2
+                size_hint: 0.3,0.2
+                on_release:
+                    root.numpad_four()
+
+            MDFloatingActionButton:
+                icon: "numeric-5"
+                #md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                md_bg_color: (255/255, 220/255, 194/255, 0.66)
+                line_width: 1.2
+                line_color: [246/255, 121/255, 2/255, 1]
+                text_color: [0,0,0,1]
+                size_hint: 0.3,0.2
+                on_release:
+                    root.numpad_five()
+
+
+            MDFloatingActionButton:
+                icon: "numeric-6"
+                md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                text_color: [0,0,0,1]
+                size_hint: 0.3,0.2
+                #line_color: [255/255, 255/255, 255/255, 1]
+                #line_width: 1.2
+                on_release:
+                    root.numpad_six()
+
+            MDFloatingActionButton:
+                icon: "numeric-7"
+                md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                text_color: [0,0,0,1]
+                #line_color: [255/255, 255/255, 255/255, 1]
+                #line_width: 1.2
+                size_hint: 0.3,0.2
+                on_release:
+                    root.numpad_seven()
+
+            MDFloatingActionButton:
+                icon: "numeric-8"
+                #md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                md_bg_color: (255/255, 220/255, 194/255, 0.66)
+                text_color: [0,0,0,1]
+                line_color: [246/255, 121/255, 2/255, 1]
+                size_hint: 0.3,0.2
+                line_width: dp(1.5)
+                on_release:
+                    root.numpad_eight()
+
+            MDFloatingActionButton:
+                icon: "numeric-9"
+                md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                text_color: [0,0,0,1]
+                #line_color: [255/255, 255/255, 255/255, 1]
+                #line_width: 1.2
+                size_hint: 0.3,0.2
+                on_release:
+                    root.numpad_nine()
+
+            MDFloatingActionButton:
+                icon: "circle-medium"
+                icon_color: [1,1,0,1]
+                md_bg_color: (208/255, 200/255, 200/255, 0.1)
+                size_hint: 0.3,0.2
+                line_color: [1,1,1,1]
+                line_width : dp(1.5)
+                on_release:
+                    root.numpad_point()
+
+            MDFloatingActionButton:
+                icon: "numeric-0"
+                #md_bg_color: (255/255, 255/255, 255/255, 0.66)
+                md_bg_color: (255/255, 205/255, 168/255, 0.66)
+                text_color: [0,0,0,1]
+                line_width: 1.5
+                size_hint: 0.3,0.2
+                line_color: [246/255, 121/255, 2/255, 1]
+                #pos: grid.pos[0], grid.pos[1] - 250
+                on_release:
+                    root.numpad_zero()
+
+        MDIconButton:
+            id: backspace
+            icon: "backspace"
+            theme_text_color: 'Custom'
+            opacity: 0
+            text_color: [1,1,1,1]
+            user_font_size: "30sp"
+            pos_hint: {"center_x": 0.72, "center_y": 0.115}
+            on_release:
+                root.removele()
+
+        MDFloatingActionButton:
+            id: next
+            icon: 'checkbox-marked-circle-plus-outline'
+            opacity : 0
+            font_size: '18sp'
+            colspan: 2
+            size_hint: 0.15,0.08
+            pos: answer.pos[0] + dp(150), answer.pos[1] + dp(5)
+            md_bg_color: (181/255, 255/255, 183/255, 1)
+            icon_color: [73/255, 107/255, 74/255,1]
+            on_release:
+                root.check()
+                root.the_percent_set()
+                root.clear()
+
+        Label:
+            id: time
+            text: ""
+            font_size: '250sp'
+            color: (118/255, 223/255, 85/225,1)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+
+
+        SlidingPopup:
+            id: popup
+            opacity: 0
+            size_hint : 0.75, 0.8
+            top_hint: 0.3
+            my_x_hint: -0.5
+            pos_hint: {"center_x": self.my_x_hint, "center_y": 0.5}
+            canvas:
+                Color:
+                    rgb: 0,0,0,1
+                Rectangle:
+                    id: rectangle
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: .5, .5, .5, 1
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+
+            MDFloatingActionButton:
+                icon: "home-flood"
+                pos_hint: {'center_x': 0.5, 'center_y': 1}
+                md_bg_color: 0,0,0,1
+                user_font_size: "24sp"
+                line_color: (248/255, 181/255, 12/255, 1)
+                line_width: dp(3)
+                on_press:
+                    root.manager.push("main")
+                    root.manager.transition.direction = "down"
+
+            Label:
+                text: "- S C O R E -"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+                font_size: '20sp'
+                bold: True
+                color: (248/255, 181/255, 12/255, 1)
+
+            Label:
+                id: final_score
+                opacity: 0
+                text: "00"
+                pos_hint : {'center_x': 0.5, 'center_y': 0.75}
+                font_size: '110sp'
+
+            Label:
+                id: final_score_label
+                opacity: 0
+                pos_hint: {'center_x': 0.5, 'center_y': 0.75}
+                font_size: '18sp'
+                text: "NEW"
+                halign: 'center'
+                color: (0, 255/255, 0, 1)
+
+
+            Label:
+                id: no_ques
+                opacity: 0
+                color: (39/255, 245/255, 242/255, 1)
+                font_size: '16sp'
+                italic: True
+                pos_hint: {'center_x': 0.5, 'center_y': 0.47}
+                text: "No question answered,\nlil flower?"
+                halign: 'center'
+
+            Label:
+                id: no_ques2
+                opacity: 0
+                color: (248/255, 181/255, 12/255, 1)
+                font_size: '22sp'
+                bold: True
+                pos_hint: {'center_x': 0.5, 'center_y': 0.38}
+                text: "let's play again"
+                halign: 'center'
+
+            Label:
+                id: time_label
+                color: (39/255, 245/255, 242/255, 1)
+                pos_hint: {'center_x': 0.36, 'center_y': 0.54}
+                text: "Time per question:"
+                halign: 'center'
+
+            Label:
+                id: the_seconds
+                pos_hint: {'center_x': 0.79, 'center_y': 0.54}
+                font_size: '16sp'
+                opacity: 0
+                text: "0"
+                halign: 'center'
+
+            Label:
+                id: the_seconds_new
+                opacity: 0
+                pos_hint: {'center_x': 0.79, 'center_y': 0.54}
+                font_size: '18sp'
+                text: "NEW"
+                halign: 'center'
+                color: (0, 255/255, 0, 1)
+
+            Label:
+                id: aq
+                color: (39/255, 245/255, 242/255, 1)
+                pos_hint: {'center_x': 0.4, 'center_y': 0.44}
+                text: "Attempted Questions:"
+                halign: 'center'
+
+            Label:
+                id: attempts
+                pos_hint: {'center_x': 0.75, 'center_y': 0.44}
+                text: "0"
+                font_size: '17sp'
+                halign: 'center'
+
+            Label:
+                id: thescore_label
+                color: (39/255, 245/255, 242/255, 1)
+                font_size: '20sp'
+                bold: True
+                pos_hint: {'center_x': 0.4, 'center_y': 0.24}
+                text: "Your Score:"
+                halign: 'center'
+
+            Label:
+                id: percentage
+                pos_hint: {'center_x': 0.71, 'center_y': 0.24}
+                font_size: '20sp'
+                bold: True
+                text: "0"
+                halign: 'center'
+
+            Label:
+                id : end_streak
+                color: (39/255, 245/255, 242/255, 1)
+                pos_hint: {'center_x': 0.4, 'center_y': 0.35}
+                text: "Highest Streak:"
+                halign: 'center'
+
+            Label:
+                id: streaknum
+                opacity: 0
+                size_hint: None, None
+                text: '0'
+                font_size: '20sp'
+                bold: True
+                pos_hint: {'center_x': 0.68, 'center_y': 0.35}
+                halign: 'center'
+
+            Label:
+                id: streak_label
+                opacity: 0
+                pos_hint: {'center_x': 0.68, 'center_y': 0.35}
+                font_size: '18sp'
+                text: "NEW"
+                halign: 'center'
+                color: (0, 255/255, 0, 1)
+
+            Label:
+                id: streakcomment
+                size_hint: None, None
+                text: ''
+                font_size: '12sp'
+                italic : True
+                pos_hint: {'center_x': 0.82, 'center_y': 0.35}
+                halign: 'center'
+
+            MDIcon:
+                id: swipeupicon
+                icon: "arrow-up-bold-outline"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.16}
+                font_size: '18sp'
+                icon_color: (144/255, 139/255, 141/255, 1)
+
+
+            Label:
+                id: swipeup
+                text: "SWIPE  UP"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.12}
+                font_size: '14sp'
+                color: (144/255, 139/255, 141/255, 1)
+
+            Label:
+                id: samurai_two
+                markup:True
+                text: ""
+                pos_hint: {'center_x': 0.5, "center_y" : 0.15}
+                font_size: sp(16)
+
+            ScrollView:
+                id: scroller
+                size_hint_y: 0.6
+                scroll_distance: 10
+                pos_hint: {'x':0, 'y':0.01}
+                do_scroll_x : False
+                do_scroll_y : True
+                bar_color: (39/255, 245/255, 242/255, 1)
+                bar_margin: dp(4)
+                bar_width: dp(3)
+
+                GridLayout:
+                    size_hint_x: 1
+                    size_hint_y : None
+                    height: self.minimum_height
+                    cols: 1
+                    FloatLayout:
+                        size_hint_y: None
+                        size_hint_x: 1
+                        height: '250dp'
+                        Label:
+                            text: ""
+
+                    FloatLayout:
+                        size_hint_y : None
+                        size_hint_x: None
+                        width: scroller.width - dp(10)
+                        height: '250dp'
+                        canvas:
+                            Color:
+                                rgb: 0/255, 0/255, 0/255, 1
+                            Rectangle:
+                                id: rectangle
+                                pos : self.pos[0] + dp(5), self.pos[1]
+                                size : self.size
+                                #self.size[0]- 20, self.size[1]
+
+                        Label:
+                            id: samurai
+                            markup:True
+                            text: ""
+                            pos_hint: {'center_x': 0.5, "center_y" : 0.91}
+                            color: (255/255, 255/255, 255/255, 1)
+                            font_size: sp(16)
+
+                        Label:
+                            markup: True
+                            color: (1,1,1, 1)
+                            pos_hint : {'center_x': 0.5, 'center_y' : 0.5}
+                            halign: 'center'
+                            text: "[color=00FFFF][size=40]Now..\n[/size][/color][size=20]let's review the[/size] \n [i][b] tougher questions eh?[/b][/i]"
+                            halign: "center"
+                            font_size: sp(14)
+
+                    BoxLayout:
+                        size_hint_y : None
+                        size_hint_x: 1
+                        height: self.minimum_height
+
+                        GridLayout:
+                            id: question_answer
+                            size_hint_x: 1
+                            size_hint_y: None
+                            height: self.minimum_height
+                            row_default_height:'40dp'
+                            spacing: '20dp'
+                            row: 1
+                            cols: 3
+                            canvas:
+                                Color:
+                                    rgb: 1/255, 1/255, 1/255, 1
+                                Rectangle:
+                                    pos : self.pos[0] + dp(10), self.pos[1]
+                                    size : self.size[0]- dp(20), self.size[1]
+
+                            Label:
+                                text: "Question"
+                                pos_hint: {'center_x': 0.2, "center_y" : 0.9}
+                                color: (248/255, 181/255, 12/255, 1)
+                                font_size: '15sp'
+                                bold: True
+
+
+                            Label:
+                                pos_hint : {'center_x': 0.5, 'center_y' : 0.9}
+                                text: "Your\nAnswer"
+                                halign: "center"
+                                font_size: '15sp'
+                                bold: True
+
+                            Label:
+                                pos_hint : {'center_x': 0.8, 'center_y' : 0.9}
+                                text: "Correct\nAnswer"
+                                color: 0,1,0,1
+                                font_size: '15sp'
+                                bold: True
+
+                            BoxLayout:
+                                id: question_part
+                                orientation: 'vertical'
+                                size_hint_y: None
+#                                height: self.texture_size.pos[1]
+                                height: self.minimum_height
+                                spacing: '40dp'
+                                cols: 1
+
+                            BoxLayout:
+                                id: answer_part
+                                orientation: 'vertical'
+                                size_hint_y: None
+#                                height: self.texture_size.pos[1]
+                                height: self.minimum_height
+                                spacing: '40dp'
+                                cols: 1
+
+                            BoxLayout:
+                                id: realanswer_part
+                                orientation: 'vertical'
+                                size_hint_y: None
+#                                height: self.texture_size.pos[1]
+                                height: self.minimum_height
+                                spacing: '40dp'
+                                cols: 1
+
+                            Label:
+                                font_size: '50sp'
+                                text: ""
